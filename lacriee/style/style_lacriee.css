@@ -1,0 +1,479 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: Arial;
+}
+
+/************** VUE : HEADER **************/
+
+#header{
+	min-width: 600px;
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	background-image: linear-gradient(to right, rgba(1,70,128, 1), rgb(19,92,197));
+	color: white;
+	position: relative;
+	animation-name: headerAnim;
+	animation-duration: 3s;
+}
+
+@keyframes headerAnim{
+	from{
+		top: -300px;
+	}
+	to{
+		top: 0px;
+	}
+}
+
+.imgLogoHeader{
+	border: 5px outset lightgray;
+	filter: drop-shadow(10px 10px 5px rgba(255, 255, 255, 0.7));
+	border-radius: 40%;
+	width: 150px;
+	height: 150px;
+	position: relative;
+	animation-name: imgLogoHeaderAnim;
+	animation-duration: 4s;
+}
+
+@keyframes imgLogoHeaderAnim{
+	from{
+		width: 0px;
+		height: 0px;
+	}
+	to{
+		width: 150px;
+		height: 150px;
+	}
+}
+
+.header-element:nth-child(2){
+	align-self: center;
+	font-family: Arial Black;
+	letter-spacing: 25px;
+	font-size: 23px;
+}
+
+.header-element:nth-child(3) a{
+	color: white;
+	margin-right: 25px;
+	text-decoration: none;
+	font-weight: bold;
+} 
+
+
+/*****************************************/
+
+#footer
+{
+	font-family: Arial;
+	height: 100%;
+	background-color: #87ADBE;
+	text-align: center;
+	margin-top: 10%;
+}
+
+
+/************** VUE : MENU **************/
+
+/* menuPagePrinc, menuAdmin, menuAcheteur */
+
+#menu{
+	background-color: LightGrey;
+	width: auto;
+
+}
+
+#ligne
+{
+	padding-top: 0.5%;
+	padding-bottom: 0.5%;
+}
+
+.lienMenu {
+    font-family: Arial;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 130%;
+    padding-right: 2%;
+    color: #2D2D24;
+}
+
+.lienMenu:hover{
+	color: #FDFEFE;
+	background-color: #87ADBE;
+	text-decoration: underline;
+	padding: 15px 5px 13.5px 5px;
+	margin-right: 90px;
+}
+
+
+/*****************************************/
+
+
+
+/************** VUE : CONNEXION **************/
+
+
+#connexion{
+	margin: 0 auto;
+	width: 600px;
+	font-size: 30px;
+	border: 5px solid black;
+	background-color: white;
+	padding: 50px 30px 5px 50px;
+}
+
+.lblConnexion{
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.inputConnexion{
+	font-family: Arial;
+	font-size: 20px;
+	border: 5px solid LightGrey;
+	border-radius: 30px;
+	padding: 15px;
+	width: 375px;
+}
+
+.btnConnexion{
+	font-size: 20px;
+	margin: 30px 70px 30px 70px;
+	border: 5px solid black;
+	border-radius: 30px;
+	padding: 15px;
+	text-align: center;
+}
+
+/*********************************************/
+
+
+/************** VUES : CREATION_COMPTES, CREATION_LOTS, AJOUT_ELEMENTS **************/
+
+
+/*#creationComptes, #creationLots{
+	margin: 0 auto;
+	width: 800px;
+	font-size: 30px;
+	border: 5px solid black;
+	background-color: white;
+	padding: 70px 50px 20px 70px;
+}*/
+
+.BoxLots{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.colonne
+{
+	width: 20%;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+.button
+{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 2%;
+	margin-left: 2%;
+}
+
+.button-l
+{
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 2%;
+}
+
+.BoxElements{
+	display: flex;
+	justify-content: center;
+}
+
+.lblCreationComptes, .lblCreationLots, .lblAjoutElements, .lblCreationEncheres{
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 15px;
+	margin: 10px;
+}
+
+.inputCreationComptes, .inputCreationLots, .inputAjoutElements, .selectCreationLots, .selectCreationLotsEspece, .selectLotEncheres, .inputCreationEncheres {
+    font-family: Arial;
+    font-size: 14px;
+    border: 2px solid LightGrey;
+    padding: 10px;
+    width: 80%;
+    margin: 10px;
+}
+
+.inputCreationComptes:valid, .inputCreationLots:valid, .inputAjoutElements:valid, .inputCreationEncheres:valid, .inputCreationLotsTaille:valid{
+	border-width: 2px;
+	border-color: green;
+}
+
+.selectCreationLotsEspece{
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 10px;
+	width: 80%;
+	margin: 10px;
+}
+
+.inputCreationLotsTaille{
+	font-family: Arial;
+	font-size: 14px;
+	border: 5px solid LightGrey;
+	padding: 10px;
+	width: 80%;
+	margin: 10px;
+}
+
+.divBtnCreationLots, .divBtnEnregistrementLots, .divBtnEnregistrementComptes, .divBtnEnregistrementElements{
+	text-align: center;
+	margin-top: 2%;
+}
+
+.btnCreationComptes, .btnCreationLots, .btnAjoutEnchere, .btnEnregistrementLot, .btnEnregistrementComptes, .btnEnregistrementElements{
+	font-size: 17px;
+	border: 2px solid #2D2D24;
+	border-radius: 10px;
+	padding: 15px;
+}
+
+.btnAjoutEspece{
+	font-size: 17px;
+	border: 2px solid #2D2D24;
+	border-radius: 10px;
+	padding: 15px;
+	margin-left: 20%;
+}
+
+.buttonCreationComptes
+{
+	display: flex;
+	justify-content: center;
+}
+
+.Box3{
+	width: 300px; 
+	margin-right: 0 auto;
+}
+
+#succes{
+	width: 600px; 
+	margin: 0 auto;
+	padding: 50px 50px 50px 50px;
+	text-align: center;
+	background-color: rgba(0, 255, 0, 0.7);
+	border: 3px solid rgb(179, 181, 189);
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Arial;
+}
+
+#valeurs{
+	width: 600px; 
+	margin: 0 auto;
+	padding: 50px 50px 50px 50px;
+	background-color: white;
+	border: 3px solid rgb(179, 181, 189);
+	font-size: 20px;
+	font-family: Arial;
+}
+
+#etiquetteLot{
+	border-collapse: collapse;
+	width: 900px; 
+	margin: 0 auto;
+	padding: 60px 70px 50px 70px;
+	background-color: white;
+	border: 5px solid black;
+	font-size: 20px;
+	font-family: Arial;
+}
+
+#etiquetteLot, tr, td{
+	border-collapse: collapse;
+	border: 5px solid black;
+	padding: 0px 50px 0px 40px;
+}
+
+span.etiquette{
+	margin-left: 30%;
+}
+
+span.etiquette2{
+	margin-left: 50%;
+	font-size: 75px;
+}
+
+span.etiquette3{
+	margin-left: 40%;
+	font-size: 60px;
+}
+
+span.etiquette4{
+	margin-left: 3%;
+	font-size: 80px;
+}
+
+.tdDateHeure{
+	padding: 10px;
+}
+
+
+/*********************************************/
+
+/* #tabEncheres{ */
+	/* border-collapse: collapse; */
+	/* border: 3px solid black; */
+	/* margin: 0 auto; */
+	/* font-family: Arial; */
+	/* background-color: white; */
+/* } */
+
+/* #tabEncheres, tr, td{ */
+	
+	/* border-collapse: collapse; */
+	/* border: 3px solid black; */
+/* } */
+
+/* .LigneEncheres1{ */
+	/* background-color: LightGrey; */
+/* } */
+
+/* #tabEncheres, .LienEncheres{ */
+	/* text-decoration: none; */
+	/* color: black; */
+	/* cursor: pointer; */
+/* } */
+
+/* .LigneEncheres2:hover, .LienEncheres:hover{ */
+	/* background-color: #87ADBE; */
+	/* font-weight: bold; */
+	/* color: white; */
+/* } */
+
+/***** VUE : PARTICIPATION_ENCHERES *****/
+
+.divParticipationEncheres{
+	width: 1000px;
+	
+	margin: 0 auto;
+}
+
+.selectLotEnchere{
+	font-weight: bold;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 15px;
+	margin-right: 12px;
+	border: 5px solid Grey;
+	padding: 10px;
+}
+
+.optionLotEnchere1{
+	font-weight: bold;
+	background-color: LightGrey;
+	border: 5px solid gray;
+}
+
+.optionLotEnchere2{
+	font-weight: bold;
+	background-color: #BCDDED;
+	border: 3px solid gray;
+}
+
+.btnParticipationEncheres{
+	font-size: 15px;
+	border-radius: 10px;
+	border: 5px solid black;
+	padding: 15px;
+	text-align: center;
+}
+
+/******************************************/
+
+
+/****** VUE : PARTICIPATION_ENCHERES_2 *****/
+
+.divBtnCreationEncheres{
+	width: 350px;
+	
+	margin: 0 auto;
+}
+
+.btnCreationEncheres{
+	font-size: 17px;
+	border: 5px solid black;
+	border-radius: 30px;
+	padding: 15px;
+	text-align: center;
+}
+
+.AfficherEncheres{
+	background-color: rgb(20, 1, 1);
+	padding: 30px;
+	width: 900px;
+	margin: 0 auto;
+	border: 3px solid black;
+	display: flex;
+    justify-content: space-around;
+}
+
+.lblName{
+	font-size: 20px;
+	font-family: Arial Black;
+	margin-left: 30px;
+	color: white;
+}
+
+.lblResultat{
+	font-size: 30px;
+	font-family: Arial;
+	margin-left: 30px;
+	color: red;
+	background-color: rgb(121, 24, 24);
+	padding: 5px;
+}
+
+
+/*******************************************/
+
+/******************* VUE : AffichageFactures.php ************************/
+
+.contenuFactures{
+	border: 5px solid black;
+	background-color: white;
+	font-family: Arial;
+	padding-left: 4%;
+	padding-right: 4%;
+	margin: 0 auto;
+	width: 800px;
+}
+
+.titreNumFacture{
+	text-align: center;
+	font-weight: bold;
+}
+
+.tabFactures{
+	border-collapse: collapse;
+	width: 800px; 
+	margin: 0 auto;
+	padding: 60px 70px 50px 70px;
+	background-color: white;
+	border: 1px solid black;
+	font-size: 20px;
+	font-family: Arial;
+}
+

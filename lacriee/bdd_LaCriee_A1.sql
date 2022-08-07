@@ -1,0 +1,129 @@
+DROP DATABASE IF EXISTS `bdd_LaCriee_A1`;
+
+CREATE DATABASE `bdd_LaCriee_A1`;
+
+USE `bdd_LaCriee_A1`;
+
+
+CREATE TABLE TAILLE(
+   TailleID INTEGER NOT NULL,
+   CONSTRAINT `pk_Taille` PRIMARY KEY(TailleID)
+);
+
+CREATE TABLE BAC(
+   BacID VARCHAR(5) NOT NULL,
+   TareBac DECIMAL(15,2) NOT NULL,
+   CONSTRAINT `pk_Bac` PRIMARY KEY(BacID)
+);
+
+CREATE TABLE ACHETEUR(
+   AcheteurID INTEGER NOT NULL AUTO_INCREMENT,
+   LoginAcheteur VARCHAR(7) NOT NULL,
+   PasswordAcheteur VARCHAR(7) NOT NULL,
+   RaisonSocialeEntrepriseAcheteur VARCHAR(50) NOT NULL,
+   CodeRueAcheteur VARCHAR(10) NOT NULL,
+   NomRueAcheteur VARCHAR(50) NOT NULL,
+   CodePostalAcheteur INT,
+   VilleAcheteur VARCHAR(50) NOT NULL,
+   NumHabilitation VARCHAR(10) NOT NULL,
+   CONSTRAINT `pk_Acheteur` PRIMARY KEY(AcheteurID)
+);
+
+CREATE TABLE BATEAU(
+   BateauID INTEGER NOT NULL AUTO_INCREMENT,
+   NomBateau VARCHAR(50) NOT NULL,
+   ImmatriculationBateau VARCHAR(50) NOT NULL,
+   CONSTRAINT `pk_Bateau` PRIMARY KEY(BateauID)
+);
+
+CREATE TABLE PECHE(
+   BateauID INTEGER NOT NULL,
+   DatePeche DATETIME NOT NULL,
+   CONSTRAINT `pk_Peche` PRIMARY KEY(BateauID, DatePeche),
+   CONSTRAINT `fk_BateauPeche` FOREIGN KEY(BateauID) REFERENCES BATEAU(BateauID)
+);
+
+CREATE TABLE ESPECE(
+   EspeceID INTEGER NOT NULL AUTO_INCREMENT,
+   NomEspece VARCHAR(50) NOT NULL,
+   NomScientifiqueEspece VARCHAR(50) NOT NULL,
+   NomCommunEspece VARCHAR(50) NOT NULL,
+   CONSTRAINT `pk_Espece` PRIMARY KEY(EspeceID)
+);
+
+CREATE TABLE QUALITE(
+   QualiteID VARCHAR(5),
+   LibelleQualite VARCHAR(50) NOT NULL,
+   CONSTRAINT `pk_Qualite` PRIMARY KEY(QualiteID)
+);
+
+CREATE TABLE PRESENTATION(
+   PresentationID VARCHAR(10) NOT NULL,
+   LibellePresentation VARCHAR(50) NOT NULL,
+   CONSTRAINT `pk_Presentation` PRIMARY KEY(PresentationID)
+);
+
+CREATE TABLE DATE_ENCHERE(
+   DateHeureEnchere DATETIME NOT NULL,
+   CONSTRAINT `pk_DateHeureEnchere` PRIMARY KEY(DateHeureEnchere)
+);
+
+CREATE TABLE FACTURE(
+   FactureID INTEGER NOT NULL AUTO_INCREMENT,
+   DateHeureFacture DATETIME NOT NULL,
+   MontantFacture INT NOT NULL,
+   FacturePayee VARCHAR(3) NOT NULL,
+   CONSTRAINT `pk_FactureID` PRIMARY KEY(FactureID)
+);
+
+CREATE TABLE LOT(
+   LotID INTEGER NOT NULL AUTO_INCREMENT,
+   BateauID INTEGER NOT NULL,
+   DatePeche DATETIME NOT NULL,
+   PoidsBrutLot DECIMAL(15,2) NOT NULL,
+   PrixPlancherLot DECIMAL(15,2) NOT NULL,
+   PrixDepartLot DECIMAL(15,2) NOT NULL,
+   PrixEncheresMax DECIMAL(15,2) NOT NULL,
+   DateEnchereLot DATE NOT NULL,
+   HeureDebutEnchereLot TIME NOT NULL,
+   CodeEtatLot VARCHAR(50) NOT NULL,
+   EspeceID INT NOT NULL,
+   TailleID INT NOT NULL,
+   PresentationID VARCHAR(50) NOT NULL,
+   QualiteID VARCHAR(5) NOT NULL,
+   BacID VARCHAR(5) NOT NULL,
+   AcheteurID INTEGER,
+   FactureID INTEGER,
+   CONSTRAINT `pk_Lot` PRIMARY KEY(LotID, BateauID, DatePeche),
+   CONSTRAINT `fk_PecheLot` FOREIGN KEY(BateauID, DatePeche) REFERENCES PECHE(BateauID, DatePeche),
+   CONSTRAINT `fk_EspeceLot` FOREIGN KEY(EspeceID) REFERENCES ESPECE(EspeceID),
+   CONSTRAINT `fk_TailleLot` FOREIGN KEY(TailleID) REFERENCES TAILLE(TailleID),
+   CONSTRAINT `fk_PresentationLot` FOREIGN KEY(PresentationID) REFERENCES PRESENTATION(PresentationID),
+   CONSTRAINT `fk_QualiteLot` FOREIGN KEY(QualiteID) REFERENCES QUALITE(QualiteID),
+   CONSTRAINT `fk_BacLot` FOREIGN KEY(BacID) REFERENCES BAC(BacID),
+   CONSTRAINT `fk_AcheteurLot` FOREIGN KEY(AcheteurID) REFERENCES ACHETEUR(AcheteurID),
+   CONSTRAINT `fk_FactureLot` FOREIGN KEY(FactureID) REFERENCES FACTURE(FactureID)
+);
+
+CREATE TABLE POSTER(
+   LotID INTEGER NOT NULL,
+   DateHeureEnchere DATETIME NOT NULL,
+   AcheteurID INTEGER,
+   PrixEnchere DECIMAL(15,2) NOT NULL,
+   CONSTRAINT `pk_Poster` PRIMARY KEY(LotID, DateHeureEnchere, AcheteurID),
+   CONSTRAINT `fk_DateEncherePoster` FOREIGN KEY(DateHeureEnchere) REFERENCES DATE_ENCHERE(DateHeureEnchere),
+   CONSTRAINT `fk_LotPoster` FOREIGN KEY(LotID) REFERENCES LOT(LotID),
+   CONSTRAINT `fk_AcheteurPoster` FOREIGN KEY(AcheteurID) REFERENCES ACHETEUR(AcheteurID)
+);
+
+
+/* INSERTION */
+
+
+INSERT INTO `QUALITE` VALUES ("E", "Extra"), ("A", "Glacé"), ("B", "Déclassé");
+
+INSERT INTO `PRESENTATION` VALUES ("ENT", "Entier"), ("VID", "Vidé");
+
+INSERT INTO `BAC` VALUES ("B", 2.5), ("F", 4);
+
+
